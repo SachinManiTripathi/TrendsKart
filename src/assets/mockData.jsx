@@ -1,4 +1,7 @@
-import { FaHeadset, FaLock, FaMoneyBillWave, FaShippingFast, FaTag } from "react-icons/fa"
+import { FaHeadset, FaLock, FaMoneyBillWave, FaShippingFast, FaTag } from "react-icons/fa";
+import MenCategory from '../../src/assets/images/MenCategory.jpg';
+import WomenCategory from '../../src/assets/images/WomenCategory.jpg';
+import KidsCategory from '../../src/assets/images/KidsCategory.jpg';
 
 export const Categories = [
     "Electronics",
@@ -36,4 +39,53 @@ export const InfoItems =[
         title:"Discount",
         description:"Products with great discounts",
     },
+]
+
+export const FashionCategories = [
+    {
+        title:"Men",
+        imageURl: MenCategory,
+    },
+    {
+        title:"Women",
+        imageURl: WomenCategory,
+    },
+    {
+        title:"Kids",
+        imageURl: KidsCategory,
+    },
+]
+
+
+export const TopProducts = [
+    {
+        id:1,
+        imageURl:"",
+        name:"Product 1",
+        price:"Rs. 29.9"
+    },
+    {
+        id:1,
+        imageURl:"",
+        name:"Product 1",
+        price:"Rs. 29.9"
+    },
+    {
+        id:1,
+        imageURl:"",
+        name:"Product 1",
+        price:"Rs. 29.9"
+    },
+    {
+        id:1,
+        imageURl:"",
+        name:"Product 1",
+        price:"Rs. 29.9"
+    },
+    {
+        id:1,
+        imageURl:"",
+        name:"Product 1",
+        price:"Rs. 29.9"
+    }
 ]

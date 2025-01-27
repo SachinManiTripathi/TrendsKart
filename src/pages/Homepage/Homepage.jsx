@@ -1,10 +1,20 @@
-import { Categories } from "../../assets/mockData";
+import { Categories, TopProducts } from "../../assets/mockData";
 import HomeBanner from "../../assets/images/HomeBanner.jpg"
 import InfoSections from "../../components/InfoSection/InfoSections";
-
-Categories
+import FashionCategory from "../../components/FashionCategory/FashionCategory";
+import { setProducts } from "../../redux/productSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 function Homepage() {
+
+    const dispatch = useDispatch();
+    const products = useSelector(state => state.product);
+    useEffect(()=>{
+        dispatch(setProducts(TopProducts));
+    },[]);
+
+
   return (
     <div className="bg-white mt-2  px-4 md:px-16 lg:px-24 ">
         <div className="container mx-auto py-4 flex flex-col md:flex-row space-x-2">
@@ -33,6 +43,16 @@ function Homepage() {
                     
         </div>
         <InfoSections />
+
+        <FashionCategory />
+        <div>
+            <h2>Top Products</h2>
+            <div>
+                {products?.products?.slice(0,5).map(((product,index)=>(
+                    <div key={index}>{product.name}</div>
+                )))}
+            </div>
+        </div>
     </div>
   )
 }
