@@ -5,6 +5,8 @@ import FashionCategory from "../../components/FashionCategory/FashionCategory";
 import { setProducts } from "../../redux/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import Shop from "../Shop/Shop";
 
 function Homepage() {
 
@@ -43,16 +45,16 @@ function Homepage() {
                     
         </div>
         <InfoSections />
-
         <FashionCategory />
-        <div>
-            <h2>Top Products</h2>
-            <div>
+        <div className="container mx-auto py-12">
+            <h2 className="text-3xl flex justify-center mb-10 font-semibold">Top Products</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 cursor-pointer">
                 {products?.products?.slice(0,5).map(((product,index)=>(
-                    <div key={index}>{product.name}</div>
+                    <ProductCard product={product} key={index} />
                 )))}
             </div>
         </div>
+        <Shop />
     </div>
   )
 }
