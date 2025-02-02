@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import Shop from "../Shop/Shop";
+import Footer from "../../components/Footer/Footer";
 
 function Homepage() {
 
@@ -55,6 +56,7 @@ function Homepage() {
             </div>
         </div>
         <Shop />
+       
     </div>
   )
 }

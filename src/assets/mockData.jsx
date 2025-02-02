@@ -65,27 +65,27 @@ export const TopProducts = [
         price:"Rs. 29.9"
     },
     {
-        id:1,
+        id:2,
         imageURl:"",
-        name:"Product 1",
+        name:"Product 2",
         price:"Rs. 29.9"
     },
     {
-        id:1,
+        id:3,
         imageURl:"",
-        name:"Product 1",
+        name:"Product 3",
         price:"Rs. 29.9"
     },
     {
-        id:1,
+        id:4,
         imageURl:"",
-        name:"Product 1",
+        name:"Product 4",
         price:"Rs. 29.9"
     },
     {
-        id:1,
+        id:5,
         imageURl:"",
-        name:"Product 1",
+        name:"Product 5",
         price:"Rs. 29.9"
     }
 ]
