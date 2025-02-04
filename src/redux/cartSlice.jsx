@@ -29,9 +29,39 @@ const cartSlice = createSlice({
 
             state.totalPrice += newItem.price;
             state.totalQuantity++;
+        },
+        removeFromCart(state,action) {
+            const id = action.payload;
+            const findItem = state.products.find((item)=> item.id === id);
+            if(findItem){
+                state.totalPrice -= findItem.totalPrice;
+                state.totalQuantity -= findItem.quantity;
+                state.products = state.products.filter(item=> item.id !== id);
+            }
+
+        },
+        decreaseQuantity(state,action){
+            const id = action.payload;
+            const findItem = state.products.find((item)=> item.id === id);
+            if(findItem){
+                findItem.quantity--;
+                findItem.totalPrice -= findItem.price;
+                state.totalQuantity--;
+                state.totalPrice -= findItem.price;
+            }
+        },
+        increaseQuantity(state,action){
+            const id = action.payload;
+            const findItem = state.products.find((item)=> item.id === id);
+            if(findItem){
+                findItem.quantity++;
+                findItem.totalPrice += findItem.price;
+                state.totalQuantity++;
+                state.totalPrice += findItem.price;
+            }
         }
     }
 })
 
-export const {addToCart}= cartSlice.actions;
+export const {addToCart,removeFromCart,decreaseQuantity,increaseQuantity}= cartSlice.actions;
 export default cartSlice.reducer;

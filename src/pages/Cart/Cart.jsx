@@ -1,15 +1,17 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import EmptyCart from '../../assets/images/EmptyCart.jpg';
 import { FaTrashAlt } from 'react-icons/fa';
 import { useState } from 'react';
 import Modal from '../../components/Modal/Modal';
 import ChangeAddress from '../../components/ChangeAddress/ChangeAddress';
+import  {removeFromCart, increaseQuantity, decreaseQuantity}  from '../../redux/cartSlice';
 
 
 function Cart() {
     const cart = useSelector(state=>state.cart);
     const [address,setAddress] = useState("main street,0012");
     const [isModalOpen,setIsModalOpen] = useState(false);
+    const dispatch = useDispatch();
   return (
       
     <div className='container mx-auto py-8 min-h-96 px-4 md:px-16 lg:px-24'>
@@ -42,12 +44,12 @@ function Cart() {
                       <p>${product.price}</p>
                       
                       <div className='flex items-center justify-center border border-gray'>
-                        <button className='text-xl font-bold px-1.5 border-1 border-gray'>-</button>
+                        <button onClick={()=>dispatch(decreaseQuantity(product.id))} className='text-xl font-bold px-1.5 border-1 border-gray'>-</button>
                         <p className='text-xl px-2'>{product.quantity}</p>
-                        <button className='text-xl font-bold px-1 border-1 border-gray'>+</button>
+                        <button onClick={()=>dispatch(increaseQuantity(product.id))} className='text-xl font-bold px-1 border-1 border-gray'>+</button>
                       </div>
                       <p>${(product.quantity * product.price).toFixed(2)}</p>
-                      <button className='text-red-500 hover:text-red-700'>
+                      <button onClick={() =>dispatch(removeFromCart(product.id))} className='text-red-500 hover:text-red-700'>
                         <FaTrashAlt />
                       </button>
                     </div>
@@ -77,8 +79,8 @@ function Cart() {
 
               </div>
             </div>
-            <Modal isModalOpen={isModalOpen}
-              setIsModalOpen={setIsModalOpen} > <ChangeAddress /></Modal>
+            <Modal  isModalOpen={isModalOpen}
+              setIsModalOpen={setIsModalOpen} > <ChangeAddress setAddress={setAddress} setIsModalOpen={setIsModalOpen} /></Modal>
           </div>):(
            <div className='flex justify-center'>
             <img src={EmptyCart} alt="Empty cart" className="h-96"/>
