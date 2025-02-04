@@ -1,6 +1,8 @@
 import { FaStar } from "react-icons/fa"
 import { addToCart } from "../../redux/cartSlice"
 import { useDispatch } from "react-redux"
+import { ToastContainer, toast } from 'react-toastify';
+
 
 function ProductCard({product}) {
 
@@ -10,6 +12,8 @@ function ProductCard({product}) {
         e.preventDefault();
         dispatch(addToCart(product));
         alert("Product Add to Cart Successfully!!");
+        const notify = () => toast.success("Wow so easy!");
+        notify();
 
     }
 
@@ -32,6 +36,7 @@ function ProductCard({product}) {
             <span className="group-hover:hidden">+</span>
             <span className="hidden group-hover:block">Add to Cart</span>
         </div>
+        <ToastContainer />
    </div>
   )
 }
